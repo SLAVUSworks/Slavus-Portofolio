@@ -1,0 +1,782 @@
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .index {
+        background-color: #000;
+    }
+
+    /* Pre-Loader */
+
+    #loader-wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1000;
+    }
+    #loader {
+        background-image: url(../assets/14.png);
+        background-repeat: no-repeat;
+        background-position: 50% 30%;
+        background-size: cover;
+        display: block;
+        position: relative;
+        left: 50%;
+        top: 50%;
+        width: 150px;
+        height: 150px;
+        margin: -75px 0 0 -75px;
+        border-radius: 50%;
+        border: 3px solid transparent;
+        border-top-color: #3498db;
+    
+        -webkit-animation: spin 2s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
+        animation: spin 2s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
+    
+        z-index: 1001;
+    }
+    
+        #loader:before {
+            content: "";
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            right: 5px;
+            bottom: 5px;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            border-top-color: #e74c3c;
+    
+            -webkit-animation: spin 3s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
+            animation: spin 3s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
+        }
+    
+        #loader:after {
+            content: "";
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            bottom: 15px;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            border-top-color: #f9c922;
+    
+            -webkit-animation: spin 1.5s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
+              animation: spin 1.5s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
+        }
+    
+        @-webkit-keyframes spin {
+            0%   { 
+                -webkit-transform: rotate(0deg);  /* Chrome, Opera 15+, Safari 3.1+ */
+                -ms-transform: rotate(0deg);  /* IE 9 */
+                transform: rotate(0deg);  /* Firefox 16+, IE 10+, Opera */
+            }
+            100% {
+                -webkit-transform: rotate(360deg);  /* Chrome, Opera 15+, Safari 3.1+ */
+                -ms-transform: rotate(360deg);  /* IE 9 */
+                transform: rotate(360deg);  /* Firefox 16+, IE 10+, Opera */
+            }
+        }
+        @keyframes spin {
+            0%   { 
+                -webkit-transform: rotate(0deg);  /* Chrome, Opera 15+, Safari 3.1+ */
+                -ms-transform: rotate(0deg);  /* IE 9 */
+                transform: rotate(0deg);  /* Firefox 16+, IE 10+, Opera */
+            }
+            100% {
+                -webkit-transform: rotate(360deg);  /* Chrome, Opera 15+, Safari 3.1+ */
+                -ms-transform: rotate(360deg);  /* IE 9 */
+                transform: rotate(360deg);  /* Firefox 16+, IE 10+, Opera */
+            }
+        }
+    
+        #loader-wrapper .loader-section {
+            position: fixed;
+            top: 0;
+            width: 51%;
+            height: 100%;
+            background: #222222;
+            z-index: 1000;
+            -webkit-transform: translateX(0);  /* Chrome, Opera 15+, Safari 3.1+ */
+            -ms-transform: translateX(0);  /* IE 9 */
+            transform: translateX(0);  /* Firefox 16+, IE 10+, Opera */
+        }
+    
+        #loader-wrapper .loader-section.section-left {
+            left: 0;
+        }
+    
+        #loader-wrapper .loader-section.section-right {
+            right: 0;
+        }
+    
+        /* Loaded */
+        .loaded #loader-wrapper .loader-section.section-left {
+            -webkit-transform: translateX(-100%);  /* Chrome, Opera 15+, Safari 3.1+ */
+                -ms-transform: translateX(-100%);  /* IE 9 */
+                    transform: translateX(-100%);  /* Firefox 16+, IE 10+, Opera */
+    
+            -webkit-transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);  
+                    transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+        }
+    
+        .loaded #loader-wrapper .loader-section.section-right {
+            -webkit-transform: translateX(100%);  /* Chrome, Opera 15+, Safari 3.1+ */
+                -ms-transform: translateX(100%);  /* IE 9 */
+                    transform: translateX(100%);  /* Firefox 16+, IE 10+, Opera */
+    
+    -webkit-transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);  
+            transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+        }
+        
+        .loaded #loader {
+            opacity: 0;
+            -webkit-transition: all 0.3s ease-out;  
+                    transition: all 0.3s ease-out;
+        }
+        .loaded #loader-wrapper {
+            visibility: hidden;
+    
+            -webkit-transform: translateY(-100%);  /* Chrome, Opera 15+, Safari 3.1+ */
+                -ms-transform: translateY(-100%);  /* IE 9 */
+                    transform: translateY(-100%);  /* Firefox 16+, IE 10+, Opera */
+    
+            -webkit-transition: all 0.3s 1s ease-out;  
+                    transition: all 0.3s 1s ease-out;
+        }
+        
+        /* JavaScript Turned Off */
+        .no-js #loader-wrapper {
+            display: none;
+        }
+        .no-js h1 {
+            color: #222222;
+        }
+
+    .header {
+        width: 100%;
+        border-bottom: 1px solid rgb(255, 255, 255);
+        text-align: right;
+        position: relative;
+    }
+        
+    .logo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        font-size: 32px;
+        font-weight: 100;
+        padding: 26px;
+        border-right: 1px solid rgb(255, 255, 255);
+    }
+
+      
+    .link {
+        display: inline-block;
+        padding: 15px 0;
+        margin: 15px 25px;
+        position: relative;
+        text-decoration: none;
+        text-transform: uppercase;
+        color: #0f0f0f;
+        font-weight: 800;
+        font-size: 24px;
+    }
+
+    .menu {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .nav-container {
+        border: solid rgba(255, 255, 255, 0.5);
+        height: 100%;
+        width: 300px;
+    }
+
+    .nav-container:hover {
+        border: solid rgb(255, 255, 255);
+        background-image: linear-gradient(rgba(0, 0, 0, 0.685), rgba(0, 0, 0, 0.603)),url(../assets/ezgif-4-43778c2c30.png);
+        background-repeat: no-repeat;
+        background-position: 50% 30%;
+        background-size: cover;
+    }
+    
+    .nav-title {
+        color: rgba(255, 255, 255, 0.5);
+        font-family: 'Noto Sans', sans-serif;
+        text-align: center;
+    }
+
+    .nav-title:hover {
+        color: rgb(255, 255, 255);
+    }      
+    
+    .profile-wrap {
+        margin-top: 15px;
+        margin-left: 15px;
+        margin-right: 15px;
+        display: inline-block;
+        vertical-align: top;
+        height: 425px;
+        width: 300px;
+        /* float: left; */
+        border: solid rgba(0, 0, 0, 0.534);
+    }
+    
+    .social-container {
+        margin-left: 25px;
+        margin-top: 30px;
+        display: grid;
+        grid-template-columns: repeat(5, 3.125em);
+    }
+    
+    .social-container a {
+        text-decoration: none;
+    }
+    
+    .social-container a div {
+        margin: .125em;
+        width: 45px;
+        height: 45px;
+        font-size: 1.5em;
+        color: white;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+    }
+    
+    .social-facebook {
+        background: #3b5998;
+    }
+    
+    .social-github {
+        background: #193546;
+    }
+    
+    .social-instagram {
+        background: #dd3939;
+    }
+    
+    .social-discord {
+        background: #1c5cbd;
+    }
+    
+    .social-whatsapp {
+        background: #25d366;
+    }
+    
+    @media only screen and (max-width: 660px) {
+        .profile-wrap {
+            float: none;
+            margin: 0px auto
+        }
+    }
+    
+    .profile-wrap h1 {
+        margin-top: 20px;
+        margin-left: 5px;
+        text-align: left;
+        line-height: 15px;
+        font-family: 'Noto Sans', sans-serif;
+        color: #000000;
+    }
+    
+    .bakwanjagung {
+        font-size: 15px;
+        margin-top: 15px;
+        color: rgba(255, 255, 255, 0.651);
+        text-align: center;
+    }
+    
+    .profile-wrap:hover {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/assets/cirno-mathlab.jpg);
+        background-repeat: no-repeat;
+        background-position: top;
+        background-size: cover;
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8);
+    }
+    
+    .profile-wrap h1:hover {
+        color: #000;
+    }
+    
+    .SLAVUSworks {
+        color: rgb(207, 75, 66);
+    }
+    
+    .box-profile {
+        height: 150px;
+        width: 150px;
+        border: solid 1px #000;
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8);
+        margin: auto;
+        margin-top: 10px;
+        background-image: url(/assets/cirno-fumo.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+    }
+    
+    .box-profile>p {
+        text-align: center;
+        margin-top: 10px;
+    }
+    
+    .wrapper {
+        margin-top: 10px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    
+    .container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 10px;
+    }
+    
+    .container>div {
+        height: 210px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-position: top;
+        background-size: cover;
+        background-attachment: fixed;
+        transition: all ease 0.5s;
+    }
+    
+    #bio:hover {
+        background: url(/assets/IL76.png) top center;
+        background-size: cover;
+    }
+    
+    #hob:hover {
+        background: url(/assets/Su-22.png) center center;
+        background-size: cover;
+    }
+    
+    #rep:hover {
+        background: url(/assets/github.jpg) center center;
+        background-size: cover;
+    }
+    
+    #ski:hover {
+        background: url(/assets/KureiKeiBackground-300-2.png) center center;
+        background-size: cover;
+    }
+    
+    #mil:hover {
+        background: url(/assets/mig-29-.jpg) center center;
+        background-size: cover;
+    }
+    
+    #proj:hover {
+        background: url(/assets/Lightning.jpg) center center;
+        background-size: cover;
+    }
+    
+    div h2 {
+        font-family: 'Russo One', sans-serif;
+        font-size: 2em;
+        color: #000;
+        margin: 10px;
+    }
+    
+    div p {
+        font-family: 'Russo One', sans-serif;
+        color: #000;
+        font-size: 1.1em;
+    }
+    
+    .container>div:nth-of-type(1) {
+        grid-column: 1 / 3;
+    }
+    
+    .container>div:nth-of-type(6) {
+        grid-column: 3 / 5;
+    }
+    
+    .container>div:nth-of-type(9) {
+        grid-column: 3 / 5;
+    }
+    
+    .container>div:nth-of-type(10) {
+        grid-column: 1 / 3;
+    }
+    
+    .bg-2 {
+        background: url(/assets/slavus2.png);
+    }
+    
+    .modal,
+    .modal-box {
+        z-index: 900;
+    }
+    
+    .modal-sandbox {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: transparent;
+    }
+    
+    .modal {
+        display: none;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        background: rgb(0, 0, 0);
+        background: rgba(0, 0, 0, .8);
+        overflow: auto;
+    }
+    
+    .modal-box {
+        position: relative;
+        width: 80%;
+        max-width: 920px;
+        margin: 100px auto;
+        animation-name: modalbox;
+        animation-duration: .4s;
+        animation-timing-function: cubic-bezier(0, 0, .3, 1.6);
+    }
+    
+    .modal-bio {
+        font-family: 'Noto Sans', sans-serif;
+    }
+    
+    .bio-id {
+        font-family: 'Russo One', sans-serif;
+        font-size: 20px;
+    }
+    
+    .bio-id>img {
+        float: left;
+        margin: 0 9px 3px 0;
+        width: 155px;
+    }
+    
+    .bio-en {
+        font-family: 'Russo One', sans-serif;
+        color: rgba(0, 0, 0, 0.575);
+        font-size: 15px;
+    }
+    
+    .hob-desc>img {
+        float: left;
+        margin: 0 9px 3px 0;
+        width: 155px;
+        border-radius: 50%;
+    }
+    
+    .modal-body>h1 {
+        font-family: 'Russo One', sans-serif;
+    }
+    
+    .modal-body>li {
+        font-family: 'Noto Sans', sans-serif;
+    }
+    
+    .skill-title {
+        text-align: center;
+    }
+    
+    .modal-header {
+        padding: 20px 40px;
+        background: #546E7A;
+        color: #ffffff;
+    }
+    
+    .modal-body {
+        background: #ECEFF1;
+        padding: 60px 40px;
+    }
+    /* Close Button */
+    
+    .close-modal {
+        text-align: right;
+        cursor: pointer;
+    }
+    /* Animation */
+    
+    @-webkit-keyframes modalbox {
+        0% {
+            top: -250px;
+            opacity: 0;
+        }
+        100% {
+            top: 0;
+            opacity: 1;
+        }
+    }
+    
+    @keyframes modalbox {
+        0% {
+            top: -250px;
+            opacity: 0;
+        }
+        100% {
+            top: 0;
+            opacity: 1;
+        }
+    }
+    /* Responsive */
+    
+    @media only screen and (max-width: 500px) {
+        body {
+            overflow-y: scroll;
+        }
+        .container>div:nth-of-type(1) {
+            grid-column: 1 / 5;
+        }
+        .container>div:nth-of-type(2) {
+            grid-column: 1 / -3;
+        }
+        .container>div:nth-of-type(3) {
+            grid-column: 3 / 5;
+        }
+        .container>div:nth-of-type(4) {
+            grid-column: 1 / -5;
+        }
+        .bio-id>img {
+            display: none;
+        }
+        .bio-id {
+            font-family: 'Russo One', sans-serif;
+            font-size: 20px;
+        }
+        .cards {
+            top: 1;
+        }
+    }
+    /* Military Stuff - Welcome */
+    
+    audio {
+        display: none;
+    }
+    
+    #ruski {
+        position: fixed;
+        right: 0;
+        bottom: 10;
+        min-width: 100%;
+        min-height: 100%;
+    }
+    
+    #ruski {
+        -webkit-filter: grayscale(50%);
+        filter: grayscale(100%);
+    }
+    
+    .welcome-title {
+        font-family: 'Russo One', sans-serif;
+        position: fixed;
+        top: 0;
+        background: rgba(0, 0, 0, 0.5);
+        color: #f1f1f1;
+        width: 100%;
+        padding: 20px;
+    }
+    
+    .htm {
+        color: #000;
+    }
+    
+    .pth {
+        color: #ffffff;
+    }
+    
+    .bru {
+        color: #0039a6;
+    }
+    
+    .mrh {
+        color: #d52b1e;
+    }
+    
+    .exit-mil {
+        color: #000;
+        position: fixed;
+        top: 0;
+        right: 0;
+    }
+    
+    .cards {
+        width: 80%;
+        margin: auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    
+    .card {
+        margin: 40px;
+        position: relative;
+        max-width: 250px;
+        max-height: 350px;
+        box-shadow: 0 40px 60px -6px black;
+    }
+    
+    .card-title {
+        font-family: 'Noto Sans', sans-serif;
+        display: block;
+        text-align: center;
+        color: #fff;
+        background-color: #6184a8;
+        padding: 2%;
+        border-top-right-radius: 4px;
+        border-top-left-radius: 4px;
+    }
+    
+    .card-title>a {
+        color: #ECEFF1;
+        text-decoration: none;
+    }
+    
+    .card img {
+        width: 100%;
+        height: 98%;
+        object-fit: cover;
+        display: block;
+        position: relative;
+    }
+    
+    .card-desc {
+        display: block;
+        font-size: 1.2rem;
+        position: absolute;
+        height: 0;
+        bottom: 1;
+        opacity: 0;
+        padding: 18px 8%;
+        background-color: white;
+        overflow-y: hidden;
+        transition: 0.8s ease;
+    }
+    
+    .card:hover .card-desc {
+        opacity: 1;
+        height: 18%;
+    }
+    
+    .h2 {
+        font-size: 2.8rem;
+        color: #fff;
+        margin: 40px 0 20px 0;
+        text-align: center;
+    }
+    /* Military Stuff - Tanks */
+    
+    .tanks-welcome {
+        position: static;
+        font-family: 'Russo One', sans-serif;
+        font-size: 2vw;
+        top: 0;
+        background-image: url(../assets/Tanks/parade-9.webp);
+        background-position: center 60%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        opacity: 0.8;
+        padding: 40px;
+    }
+    
+    .tanks-welcome>p {
+        color: rgb(255, 255, 255);
+    }
+    
+    .back-tanks {
+        margin-top: 15px;
+        margin-left: 15px;
+    }
+    
+    .tanks-grid-wrapper {
+        margin-top: 15px;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+    
+    .tanks-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 5px;
+        grid-template-columns: auto auto auto;
+        padding: 10px;
+    }
+    
+    .tanks-item {
+        background-size: cover;
+        border: 1px solid rgba(0, 0, 0, 0.432);
+        height: 200px;
+        font-size: 2vw;
+        text-align: center;
+    }
+    
+    .tanks-item>h4 {
+        font-family: 'Russo One', sans-serif;
+    }
+    
+    .tanks-item>p {
+        font-family: 'Noto Sans', sans-serif;
+    }
+    
+    #MS-1 {
+        background-image: url(../assets/Tanks/MS-1.jpg);
+    }
+    
+    #BT-7 {
+        background-image: url(../assets/Tanks/BT-7.webp);
+    }
+    
+    #KV-2 {
+        background-image: url(../assets/Tanks/KV-2.webp);
+    }
+    
+    #T-34 {
+        background-image: url(../assets/Tanks/t-34-85.jpg);
+    }
+    
+    #T-10 {
+        background-image: url(../assets/Tanks/T-10.jpg);
+    }
+    
+    #T-54 {
+        background-image: url(../assets/Tanks/T54.jpg);
+    }
+    
+    #T-62 {
+        background-image: url(../assets/Tanks/T-62.jpg);
+    }
+    
+    #T-64 {
+        background-image: url(../assets/Tanks/T-64.webp);
+    }
+    
+    #T-72 {
+        background-image: url(../assets/Tanks/T-72.webp);
+    }
+    
+    #T-80 {
+        background-image: url(../assets/Tanks/T-80.jpg);
+    }
+    
+    #T-90 {
+        background-image: url(../assets/Tanks/t-90.jpg);
+    }
+    
+    #T-14A {
+        background-image: url(../assets/Tanks/T-14.jpeg);
+    }
+    
+    .tanks-item:hover {
+        transform: scale(0.95);
+    }
