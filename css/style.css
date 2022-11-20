@@ -3,10 +3,6 @@
         padding: 0;
     }
 
-    .index {
-        background-color: #000;
-    }
-
     /* Pre-Loader */
 
     #loader-wrapper {
@@ -218,20 +214,24 @@
     }      
     
     .profile-wrap {
-        margin-top: 15px;
-        margin-left: 15px;
-        margin-right: 15px;
-        display: inline-block;
-        vertical-align: top;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/assets/13.png);
+        background-repeat: no-repeat;
+        background-position: top;
+        background-size: cover;
+        position: relative;
+        top: 50px;
+        margin: auto;
+        width: 50%;
+        padding: 10px;
         height: 425px;
-        width: 300px;
+        width: 450px;
         /* float: left; */
         border: solid rgba(0, 0, 0, 0.534);
     }
     
     .social-container {
-        margin-left: 25px;
-        margin-top: 30px;
+        margin-left: 90px;
+        margin-top: 90px;
         display: grid;
         grid-template-columns: repeat(5, 3.125em);
     }
@@ -279,28 +279,29 @@
     }
     
     .profile-wrap h1 {
+        text-align: center;
         margin-top: 20px;
         margin-left: 5px;
         text-align: left;
         line-height: 15px;
         font-family: 'Noto Sans', sans-serif;
-        color: #000000;
     }
     
     .bakwanjagung {
+        text-align: center;
         font-size: 15px;
         margin-top: 15px;
         color: rgba(255, 255, 255, 0.651);
         text-align: center;
     }
     
-    .profile-wrap:hover {
+    /* .profile-wrap:hover {
         background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/assets/cirno-mathlab.jpg);
         background-repeat: no-repeat;
         background-position: top;
         background-size: cover;
         box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8);
-    }
+    } */
     
     .profile-wrap h1:hover {
         color: #000;
@@ -317,10 +318,15 @@
         box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8);
         margin: auto;
         margin-top: 10px;
-        background-image: url(/assets/cirno-fumo.png);
+        /* background-image: url(/assets/cirno-fumo.png);
         background-repeat: no-repeat;
         background-position: center;
-        background-size: contain;
+        background-size: contain; */
+    }
+
+    .box-profile img {
+        height: 100%;
+        width: 150px;
     }
     
     .box-profile>p {

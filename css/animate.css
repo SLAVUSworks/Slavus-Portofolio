@@ -1,0 +1,25 @@
+
+/* index */
+
+.profile-wrap {
+    animation: fadeIn;
+    animation-duration: 2s;
+    animation-delay: 3.3s;
+}
+
+.box-profile img:hover {
+    animation: pulse;
+    animation-duration: 0.5s;
+}
+
+.box-profile h1 {
+    animation: fadeInDown;
+    animation-duration: 1s;
+    animation-delay: 4s;
+}
+
+.box-profile p {
+    animation: fadeIn;
+    animation-duration: 1s;
+    animation-delay: 4s;
+}
